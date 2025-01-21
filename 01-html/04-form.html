@@ -4,12 +4,76 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Exercise 04 - Form</title>
+    <title>Simple Form</title>
   </head>
   <body>
     <main>
-      <form action="/submit">
-        <!-- Add your code here -->
+      <h1>Form</h1>
+
+      <form action="#" method="POST">
+        <!-- Name Input Section with margin-bottom for space -->
+        <div style="margin-bottom: 10px">
+          <label for="name">Name:</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Full Name"
+            required
+          />
+        </div>
+
+        <!-- Email Input Section with margin-bottom for space -->
+        <div style="margin-bottom: 10px">
+          <label for="email">Email:</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="name@pdx.edu"
+            required
+          />
+        </div>
+
+        <!-- Favorite Character Section with a box and margin-bottom for space -->
+        <fieldset style="margin-bottom: 10px">
+          <legend>Favorite Character:</legend>
+          <div>
+            <input
+              type="radio"
+              id="spongebob"
+              name="character"
+              value="Spongebob"
+            />
+            <label for="spongebob">Spongebob</label>
+          </div>
+          <div>
+            <input type="radio" id="sandy" name="character" value="Sandy" />
+            <label for="sandy">Sandy</label>
+          </div>
+          <div>
+            <input type="radio" id="patrick" name="character" value="Patrick" />
+            <label for="patrick">Patrick</label>
+          </div>
+        </fieldset>
+
+        <fieldset style="margin-bottom: 10px">
+          <legend>Are you a fan of the show?</legend>
+          <div>
+            <input type="radio" id="Yes" name="character" value="Yes" />
+            <label for="Yes">Yes, I have watched all episodes!</label>
+          </div>
+          <div>
+            <input type="radio" id="Yes2" name="character" value="No" />
+            <label for="Yes2">Yes, it's got the best memes.</label>
+          </div>
+        </fieldset>
+
+        <!-- Submit and Reset Buttons -->
+        <div>
+          <button type="submit">Submit</button>
+          <button type="reset">Reset</button>
+        </div>
       </form>
     </main>
   </body>
