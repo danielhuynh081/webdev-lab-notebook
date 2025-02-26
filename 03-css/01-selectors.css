@@ -10,12 +10,44 @@
 
 /* Use attribute selectors for the first part of the exercise */
 
-li[class] {
-  color: var(--red);
+/* Target the first <li> with class 'dog' */
+li.dog:first-of-type {
+  color: var(--darkmagenta);
 }
 
+#cat {
+  color: var(--teal);
+}
+
+li.parrot {
+  color: var(--green);
+}
+
+li.donkey {
+  color: var(--royalblue);
+}
+
+li.hedgehog {
+  color: var(--darkmagenta);
+}
+
+li.cat.dog.parrot {
+  color: var(--royalblue);
+}
 /* Use descendant, child, and sibling selectors for the second part */
 
-section li {
+section li.first {
+  color: var(--green);
+}
+
+section li.second {
+  color: var(--darkmagenta);
+}
+
+section li.third {
+  color: var(--royalblue);
+}
+
+section .list-cleaning ol li {
   color: var(--green);
 }

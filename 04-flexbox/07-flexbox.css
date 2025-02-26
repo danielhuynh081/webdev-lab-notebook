@@ -15,7 +15,11 @@
 /* Flex Container 5 */
 
 /* Flex Container 6 */
-
+.flex-container-6 {
+  display: flex;
+  height: 300px; /* apply the specified height */
+  background-color: rgb(190, 190, 231);
+}
 .flex-container-6 .flex-item {
   width: 400px;
 }
