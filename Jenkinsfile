@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                git 'https://github.com/danielhuynh081/WebLabNotebook.git'
+		    git branch: 'main', url: 'https://github.com/danielhuynh081/WebLabNotebook.git'
             }
         }
         stage('Build') {
