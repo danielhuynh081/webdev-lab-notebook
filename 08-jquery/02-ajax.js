@@ -1,52 +1,52 @@
-const url = 'https://anapioficeandfire.com/api/books/';
+$(document).ready(() => {
+  const url = "https://anapioficeandfire.com/api/books/";
+  const app = document.querySelector("#books");
+  const loading = document.querySelector("#loading");
 
-const app = document.querySelector('#books');
-app.style.paddingLeft = 0;
-const loading = document.querySelector('#loading');
+  // Show loading indicator
+  if (loading) loading.style.display = "block";
 
-const addBookToDOM = (item) => {
-  console.log(item);
-  let element = document.createElement('div');
-  let title = document.createElement('h4');
-  let author = document.createElement('p');
-  let published = document.createElement('p');
-  let pages = document.createElement('p');
+  // Function to add a book to the DOM
+  const addBookToDOM = (item) => {
+    console.log(item.name);
 
-  element.style.display = 'flex';
-  element.style.flexDirection = 'column';
-  element.style.alignItems = 'center';
-  element.style.marginTop = '20px';
+    $("#books").append(
+      $("<div>")
+        .css({
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          marginTop: "20px",
+        })
+        .append($("<h3>").text(item.name))
+        .append($("<p>").text(`by ${item.authors[0]}`))
+        .append($("<p>").text(item.released.substr(0, 4)))
+        .append($("<p>").text(`${item.numberOfPages} pages`))
+    );
+  };
 
-  title.textContent = item.name;
-  author.textContent = `by ${item.authors[0]}`;
-  published.textContent = item.released.substr(0, 4);
-  pages.textContent = `${item.numberOfPages} pages`;
+  // Function to fetch data from the API
+  const fetchData = (url) => {
+    $.ajax({
+      url: url,
+      method: "GET",
+      success: (data) => {
+        console.log("API Response:", data);
 
-  element.append(title);
-  element.append(author);
-  element.append(published);
-  element.append(pages);
+        data.forEach((item) => {
+          addBookToDOM(item);
+        });
 
-  app.append(element);
-};
-
-const fetchData = (url) => {
-  fetch(url)
-    .then((response) => response.json())
-    .then((data) => {
-      data.forEach((item) => {
-        addBookToDOM(item);
-      });
-    })
-    .catch((error) => {
-      console.log(error);
-      let li = document.createElement('li');
-      li.textContent = `An error occured. Please try again.`;
-      app.append(li);
-    })
-    .finally(() => {
-      app.removeChild(loading);
+        // Hide loading indicator
+        if (loading) loading.style.display = "none";
+      },
+      error: (error) => {
+        console.log("Error fetching data:", error);
+        if (loading) loading.textContent = "Failed to load books.";
+      },
     });
-};
+  };
 
-fetchData(url);
+  // Start fetching data
+  fetchData(url);
+});
